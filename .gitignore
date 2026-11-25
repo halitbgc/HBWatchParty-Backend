@@ -1,0 +1,19 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userprefs
+
+# Build çıktıları
+[Bb]in/
+[Oo]bj/
+[Pp]ublish/
+*.pubxml.user
+
+# Rider / VS Code
+.idea/
+.vscode/
+
+# Diğer
+*.log
+TestResults/

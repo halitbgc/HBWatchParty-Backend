@@ -5,7 +5,7 @@ namespace YouTubeParty.Hubs
 {
     public class PlaybackSyncTracker
     {
-        private readonly ConcurrentDictionary<string, ConcurrentBag<(string Username, double Time)>> _reports = new();
+        private readonly ConcurrentDictionary<string, ConcurrentBag<(string UserId, double Time)>> _reports = new();
         private readonly ConcurrentDictionary<string, int> _consecutiveDriftRounds = new();
 
         public void StartNewRound(string roomId)
@@ -13,15 +13,15 @@ namespace YouTubeParty.Hubs
             _reports[roomId] = new ConcurrentBag<(string, double)>();
         }
 
-        public void AddReport(string roomId, string username, double time)
+        public void AddReport(string roomId, string userId, double time)
         {
             if (_reports.TryGetValue(roomId, out var bag))
             {
-                bag.Add((username, time));
+                bag.Add((userId, time));
             }
         }
 
-        public List<(string Username, double Time)> GetReports(string roomId)
+        public List<(string UserId, double Time)> GetReports(string roomId)
         {
             return _reports.TryGetValue(roomId, out var bag) ? new List<(string, double)>(bag) : new List<(string, double)>();
         }

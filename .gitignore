@@ -17,3 +17,6 @@
 # Diğer
 *.log
 TestResults/
+
+# Gizli bilgiler içeren ayar dosyası
+YouTubeParty/appsettings.json
